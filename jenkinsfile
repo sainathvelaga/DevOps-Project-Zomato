@@ -71,9 +71,9 @@ pipeline {
                 sh 'curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- -b /usr/local/bin'
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
-                       sh 'docker-scout quickview kastrov/zomato:latest'
-                       sh 'docker-scout cves kastrov/zomato:latest'
-                       sh 'docker-scout recommendations kastrov/zomato:latest'
+                       sh 'docker-scout quickview sainathvelaga/zomato:latest'
+                       sh 'docker-scout cves sainathvelaga/zomato:latest'
+                       sh 'docker-scout recommendations sainathvelaga/zomato:latest'
                    }
                 }
             }
