@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket = "daws78sremotestate"
-    key    = "jenkins"
+    key    = "zomato"
     region = "us-east-1"
     dynamodb_table = "daws78s-locking"
   }
