@@ -1,7 +1,7 @@
 pipeline {
-    agent {
-        label 'AGENT-1'
-    }
+    // agent {
+    //     label 'AGENT-1'
+    // }
     // tools {
     //     jdk 'jdk17'
     //     nodejs 'node23'
