@@ -2,10 +2,10 @@ pipeline {
     agent {
         label 'AGENT-1'
     }
-    tools {
-        jdk 'jdk17'
-        nodejs 'node23'
-    }
+    // tools {
+    //     jdk 'jdk17'
+    //     nodejs 'node23'
+    // }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
     }
