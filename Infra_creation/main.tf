@@ -14,18 +14,17 @@ module "jenkins" {
   }
 }
 
-module "jenkins_agent" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-
-  name = "jenkins-agent"
-
+resource "aws_spot_instance_request" "jenkins_agent" {
+  
   instance_type          = "t2.large"
   vpc_security_group_ids = ["sg-0981de3d2b9d286ab"]
   # convert StringList to list and get first element
   subnet_id = "subnet-0d681bd461742fc1a"
   ami = data.aws_ami.ami_info.id
-  create_spot_instance = "true"
   user_data = file("jenkins-agent.sh")
+  root_block_device {
+    volume_size = 50
+  }
   tags = {
     Name = "jenkins-agent"
   }
@@ -54,7 +53,7 @@ module "records" {
       type    = "A"
       ttl     = 1
       records = [
-        module.jenkins_agent.private_ip
+        resource.aws_spot_instance_request.jenkins_agent.private_ip
       ]
       allow_overwrite = true
     }
